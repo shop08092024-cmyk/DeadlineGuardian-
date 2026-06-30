@@ -30,7 +30,7 @@ function getSupabaseServer() {
 }
 
 // File-based simple data store in the project directory for robust persistence
-const DB_FILE = process.env.VERCEL ? require("path").join("/tmp", "data.json") : require("path").join(process.cwd(), "data.json");
+const DB_FILE = process.env.VERCEL ? path.join("/tmp", "data.json") : path.join(process.cwd(), "data.json");
 
 // Define TypeScript structures for our multi-agent model
 interface Task {
