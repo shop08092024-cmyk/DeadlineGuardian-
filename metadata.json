@@ -1,0 +1,8 @@
+{
+  "name": "Deadline Guardian",
+  "description": "An autonomous AI productivity platform that plans, prioritizes, predicts, adapts, and acts to ensure deadlines are met.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

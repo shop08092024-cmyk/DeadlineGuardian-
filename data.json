@@ -1,0 +1,334 @@
+[
+  {
+    "id": "goal-1",
+    "title": "Build Smart College Recommendation Platform",
+    "deadline": "2026-06-29T09:51:41.969Z",
+    "progress": 33,
+    "risk": "High",
+    "successProbability": 42,
+    "tasks": [
+      {
+        "id": "task-1-1",
+        "name": "Dataset Research & Collection",
+        "hours": 4,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Research Phase",
+        "dependency": "None"
+      },
+      {
+        "id": "task-1-2",
+        "name": "Backend API and Express Server Integration",
+        "hours": 8,
+        "priority": "Do Now",
+        "done": false,
+        "milestone": "Development Phase",
+        "dependency": "Dataset Research"
+      },
+      {
+        "id": "task-1-3",
+        "name": "Gemini AI Core Agent Orchestrator Setup",
+        "hours": 6,
+        "priority": "Do Now",
+        "done": false,
+        "milestone": "Development Phase",
+        "dependency": "Backend API"
+      },
+      {
+        "id": "task-1-4",
+        "name": "React Frontend Dashboard with Glassmorphic design",
+        "hours": 6,
+        "priority": "Do Today",
+        "done": false,
+        "milestone": "Development Phase",
+        "dependency": "Backend API"
+      },
+      {
+        "id": "task-1-5",
+        "name": "Comprehensive system integration & API route testing",
+        "hours": 3,
+        "priority": "Do This Week",
+        "done": false,
+        "milestone": "Testing Phase",
+        "dependency": "React Frontend"
+      },
+      {
+        "id": "task-1-6",
+        "name": "Cloud Run Deployment & Slide Pitch Prep",
+        "hours": 4,
+        "priority": "Can Wait",
+        "done": false,
+        "milestone": "Deployment Phase",
+        "dependency": "Testing Phase"
+      }
+    ],
+    "riskReasons": [
+      "3 missed work sessions noted in historical tracking",
+      "Only 33% progress with 6 days remaining",
+      "Stuck on Backend API integration which blocks 3 subsequent client-side views",
+      "Required effort (27 hours total) exceeds remaining active free time slots"
+    ],
+    "productivityHours": [
+      7,
+      8,
+      9,
+      10,
+      14,
+      19,
+      20,
+      21
+    ],
+    "bestWindow": "7 PM – 10 PM",
+    "rescueMode": true,
+    "rescuePlan": {
+      "criticalTasks": [
+        "Backend API and Express Server Integration",
+        "React Frontend Dashboard with Glassmorphic design"
+      ],
+      "tasksToSkip": [
+        "Gemini AI Core Agent Orchestrator Setup (Using simple structured rules as contingency)",
+        "Slide Pitch Prep (Using automated outlines to save 3 hours)"
+      ],
+      "emergencyTips": [
+        "Consolidate development into a single-file server deployment to bypass complex CI pipelines.",
+        "Shift focus hours to morning slots (9 AM - 11 AM) which currently have 0 tasks allocated, boosting capacity by 2 hours daily."
+      ]
+    }
+  },
+  {
+    "id": "goal-2",
+    "title": "Prepare for Google SWE Interview",
+    "deadline": "2026-07-03T09:51:41.970Z",
+    "progress": 50,
+    "risk": "Medium",
+    "successProbability": 71,
+    "tasks": [
+      {
+        "id": "task-2-1",
+        "name": "Review Core Data Structures (Graphs & Trees)",
+        "hours": 6,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Revision",
+        "dependency": "None"
+      },
+      {
+        "id": "task-2-2",
+        "name": "Solve LeetCode Arrays and Dynamic Programming (15 problems)",
+        "hours": 10,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Practice",
+        "dependency": "Core Data Structures"
+      },
+      {
+        "id": "task-2-3",
+        "name": "System Design Study (Load Balancers & Caching)",
+        "hours": 8,
+        "priority": "Do Now",
+        "done": false,
+        "milestone": "Practice",
+        "dependency": "None"
+      },
+      {
+        "id": "task-2-4",
+        "name": "Draft answers for common behavioral questions",
+        "hours": 4,
+        "priority": "Do Today",
+        "done": false,
+        "milestone": "Preparation",
+        "dependency": "None"
+      },
+      {
+        "id": "task-2-5",
+        "name": "Mock Interview Sessions with Peer Feedback",
+        "hours": 6,
+        "priority": "Do This Week",
+        "done": false,
+        "milestone": "Testing",
+        "dependency": "System Design"
+      }
+    ],
+    "riskReasons": [
+      "1 skipped system design session last night",
+      "Mock interview sessions remain unscheduled as of current radar sweep."
+    ],
+    "productivityHours": [
+      9,
+      10,
+      11,
+      20,
+      21,
+      22
+    ],
+    "bestWindow": "9 AM – 11 AM",
+    "rescueMode": false
+  },
+  {
+    "id": "goal-1-local-email-shlokpanchal2020gmailcom-1782208384400",
+    "title": "Build Smart College Recommendation Platform",
+    "deadline": "2026-06-29T09:51:41.969Z",
+    "progress": 100,
+    "risk": "Medium",
+    "successProbability": 67,
+    "tasks": [
+      {
+        "id": "task-1-1",
+        "name": "Dataset Research & Collection",
+        "hours": 4,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Research Phase",
+        "dependency": "None"
+      },
+      {
+        "id": "task-1-2",
+        "name": "Backend API and Express Server Integration",
+        "hours": 8,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Development Phase",
+        "dependency": "Dataset Research"
+      },
+      {
+        "id": "task-1-3",
+        "name": "Gemini AI Core Agent Orchestrator Setup",
+        "hours": 6,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Development Phase",
+        "dependency": "Backend API"
+      },
+      {
+        "id": "task-1-4",
+        "name": "React Frontend Dashboard with Glassmorphic design",
+        "hours": 6,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Development Phase",
+        "dependency": "Backend API"
+      },
+      {
+        "id": "task-1-5",
+        "name": "Comprehensive system integration & API route testing",
+        "hours": 3,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Testing Phase",
+        "dependency": "React Frontend"
+      },
+      {
+        "id": "task-1-6",
+        "name": "Cloud Run Deployment & Slide Pitch Prep",
+        "hours": 4,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Deployment Phase",
+        "dependency": "Testing Phase"
+      }
+    ],
+    "riskReasons": [
+      "3 missed work sessions noted in historical tracking",
+      "Only 33% progress with 6 days remaining",
+      "Stuck on Backend API integration which blocks 3 subsequent client-side views",
+      "Required effort (27 hours total) exceeds remaining active free time slots"
+    ],
+    "productivityHours": [
+      7,
+      8,
+      9,
+      10,
+      14,
+      19,
+      20,
+      21
+    ],
+    "bestWindow": "7 PM – 10 PM",
+    "rescueMode": false,
+    "rescuePlan": {
+      "criticalTasks": [
+        "Backend API and Express Server Integration",
+        "React Frontend Dashboard with Glassmorphic design"
+      ],
+      "tasksToSkip": [
+        "Gemini AI Core Agent Orchestrator Setup (Using simple structured rules as contingency)",
+        "Slide Pitch Prep (Using automated outlines to save 3 hours)"
+      ],
+      "emergencyTips": [
+        "Consolidate development into a single-file server deployment to bypass complex CI pipelines.",
+        "Shift focus hours to morning slots (9 AM - 11 AM) which currently have 0 tasks allocated, boosting capacity by 2 hours daily."
+      ]
+    },
+    "userId": "local-email-shlokpanchal2020gmailcom"
+  },
+  {
+    "id": "goal-2-local-email-shlokpanchal2020gmailcom-1782208384400",
+    "title": "Prepare for Google SWE Interview",
+    "deadline": "2026-07-03T09:51:41.970Z",
+    "progress": 100,
+    "risk": "Medium",
+    "successProbability": 82,
+    "tasks": [
+      {
+        "id": "task-2-1",
+        "name": "Review Core Data Structures (Graphs & Trees)",
+        "hours": 6,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Revision",
+        "dependency": "None"
+      },
+      {
+        "id": "task-2-2",
+        "name": "Solve LeetCode Arrays and Dynamic Programming (15 problems)",
+        "hours": 10,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Practice",
+        "dependency": "Core Data Structures"
+      },
+      {
+        "id": "task-2-3",
+        "name": "System Design Study (Load Balancers & Caching)",
+        "hours": 8,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Practice",
+        "dependency": "None"
+      },
+      {
+        "id": "task-2-4",
+        "name": "Draft answers for common behavioral questions",
+        "hours": 4,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Preparation",
+        "dependency": "None"
+      },
+      {
+        "id": "task-2-5",
+        "name": "Mock Interview Sessions with Peer Feedback",
+        "hours": 6,
+        "priority": "Done",
+        "done": true,
+        "milestone": "Testing",
+        "dependency": "System Design"
+      }
+    ],
+    "riskReasons": [
+      "1 skipped system design session last night",
+      "Mock interview sessions remain unscheduled as of current radar sweep."
+    ],
+    "productivityHours": [
+      9,
+      10,
+      11,
+      20,
+      21,
+      22
+    ],
+    "bestWindow": "9 AM – 11 AM",
+    "rescueMode": false,
+    "userId": "local-email-shlokpanchal2020gmailcom"
+  }
+]

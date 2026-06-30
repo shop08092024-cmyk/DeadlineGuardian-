@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Google Material Design 3 Light Theme */
+  --mat-bg: #F8F9FA; /* Google light gray background */
+  --mat-secondary: #FFFFFF; /* Surface */
+  --mat-tertiary: #F1F3F4; /* Surface variant */
+  --mat-card: #FFFFFF;
+  --mat-primary: #1A73E8; /* Google Blue */
+  --mat-primary-hover: #174EA6;
+  --mat-indigo: #5856d6;
+  --mat-pink: #EA4335; /* Google Red */
+  --mat-green: #34A853; /* Google Green */
+  --mat-orange: #FBBC04; /* Google Yellow */
+  --mat-zinc: #5F6368; /* Google Gray */
+  --mat-text: #202124; /* Google Text Black */
+  --mat-text-secondary: #5F6368; /* Google Text Gray */
+  --mat-border: #DADCE0; /* Google Border */
+  --mat-glass-bg: rgba(255, 255, 255, 0.95);
+  --mat-glass-vibrant-bg: rgba(248, 249, 250, 0.95);
+}
+
+.dark {
+  /* Google Material Design 3 Dark Theme */
+  --mat-bg: #202124; /* Google Dark Background */
+  --mat-secondary: #292A2D; /* Surface */
+  --mat-tertiary: #3C4043; /* Surface variant */
+  --mat-card: #292A2D;
+  --mat-primary: #8AB4F8; /* Google Blue Dark Mode */
+  --mat-primary-hover: #D2E3FC;
+  --mat-indigo: #818cf8;
+  --mat-pink: #F28B82; /* Google Red Dark Mode */
+  --mat-green: #81C995; /* Google Green Dark Mode */
+  --mat-orange: #FDD663; /* Google Yellow Dark Mode */
+  --mat-zinc: #9AA0A6; /* Google Gray Dark Mode */
+  --mat-text: #E8EAED; /* Google Text White */
+  --mat-text-secondary: #9AA0A6; /* Google Text Gray Dark */
+  --mat-border: #5F6368; /* Google Border Dark */
+  --mat-glass-bg: rgba(41, 42, 45, 0.95);
+  --mat-glass-vibrant-bg: rgba(32, 33, 36, 0.95);
+}
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-mat-bg: var(--mat-bg);
+  --color-mat-secondary: var(--mat-secondary);
+  --color-mat-tertiary: var(--mat-tertiary);
+  --color-mat-card: var(--mat-card);
+  --color-mat-primary: var(--mat-primary);
+  --color-mat-primary-hover: var(--mat-primary-hover);
+  --color-mat-indigo: var(--mat-indigo);
+  --color-mat-pink: var(--mat-pink);
+  --color-mat-green: var(--mat-green);
+  --color-mat-orange: var(--mat-orange);
+  --color-mat-zinc: var(--mat-zinc);
+  
+  --color-mat-text: var(--mat-text);
+  --color-mat-text-secondary: var(--mat-text-secondary);
+  --color-mat-border: var(--mat-border);
+}
+
+@layer utilities {
+  .mat-glass {
+    background-color: var(--mat-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .mat-glass-vibrant {
+    background-color: var(--mat-glass-vibrant-bg);
+    backdrop-filter: saturate(180%) blur(30px);
+    -webkit-backdrop-filter: saturate(180%) blur(30px);
+  }
+  .smooth-scrolling {
+    -webkit-overflow-scrolling: touch;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Grid-cols-24 utility */
+  .grid-cols-24 {
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+  }
+
+  /* Custom animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.25s ease-out;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  /* Scrollbar styling for dark mode code blocks */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--mat-border);
+    border-radius: 4px;
+  }
+
+  /* Pomodoro ring animation */
+  @keyframes ring-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  .animate-ring-pulse {
+    animation: ring-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* ── Mobile optimizations ─────────────────────────────────────────── */
+@media (max-width: 639px) {
+  /* Prevent horizontal overflow on mobile */
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Tighter card padding on very small screens */
+  .rounded-\[24px\] {
+    border-radius: 16px !important;
+  }
+
+  /* Ensure task rows don't overflow */
+  .task-row-name {
+    word-break: break-word;
+  }
+
+  /* Hide music widget on phones to avoid overlap with pomodoro */
+  .music-widget-mobile-hidden {
+    display: none !important;
+  }
+}
+
+/* Safe area insets for notch phones */
+@supports (padding: max(0px)) {
+  nav.fixed.bottom-0 {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+  main {
+    padding-bottom: max(80px, calc(60px + env(safe-area-inset-bottom)));
+  }
+}
