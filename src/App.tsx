@@ -157,10 +157,11 @@ export default function App() {
   const fetchDbStatus = async () => {
     try {
       const res = await fetch("/api/db-status");
+      if (!res.ok) return; // Prevent parsing HTML 404s on static deployments
       const data = await res.json();
       setDbStatus(data);
     } catch (err) {
-      console.error("Failed to fetch database status:", err);
+      console.warn("DB Status endpoint not available in this environment.");
     }
   };
 
@@ -819,16 +820,17 @@ export default function App() {
   useEffect(() => {
     const fetchConfigAndInitSupabase = async () => {
       try {
-        const res = await fetch("/api/config");
-        const data = await res.json();
+        // Directly access Vite environment variables (Vercel static build friendly)
+        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+        const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
         
-        // Always trigger database status checks to provide dynamic diagnostics
-        await fetchDbStatus();
+        // Safely check active DB status for diagnostics (might 404 on pure static deployments, which is fine)
+        try { await fetchDbStatus(); } catch (e) { console.warn("DB Status check skipped"); }
 
-        if (data.supabaseUrl && data.supabaseAnonKey) {
-          setSupabaseConfig(data);
+        if (supabaseUrl && supabaseAnonKey) {
+          setSupabaseConfig({ supabaseUrl, supabaseAnonKey });
           // Use singleton to avoid "Multiple GoTrueClient instances" warning
-          const client = getSupabaseClient(data.supabaseUrl, data.supabaseAnonKey);
+          const client = getSupabaseClient(supabaseUrl, supabaseAnonKey);
           setSupabase(client);
           
           // Check active session
