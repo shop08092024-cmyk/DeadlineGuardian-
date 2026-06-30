@@ -867,25 +867,21 @@ formattedOutput should be markdown-formatted and professional. Include real date
 
 // ==================== VITE SERVER GATEWAY ====================
 
-// Vite middleware for full development flow, Express static for production flow
-async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
+// Export the Express app for Vercel Serverless Functions
+export default app;
+
+// Local Development Server (only runs if not on Vercel)
+if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
+  async function startServer() {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa"
     });
     app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server launched successfully at http://localhost:${PORT}`);
     });
   }
-
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server launched successfully at http://localhost:${PORT}`);
-  });
+  startServer();
 }
-
-startServer();
