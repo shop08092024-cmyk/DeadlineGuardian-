@@ -1,20 +1,40 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Deadline Guardian 🚀
 
-# Run and deploy your AI Studio app
+**Deadline Guardian** is an AI-powered Autonomous Productivity Chief of Staff designed for the Gemini API Developer Competition ("The Last-Minute Life Saver"). It helps students, professionals, and entrepreneurs proactively manage their tasks, avoid missing deadlines, and stay focused using a suite of AI-driven productivity tools.
 
-This contains everything you need to run your app locally.
+## Features ✨
+- **Dynamic Task Management**: Break down complex goals into sub-tasks with real-time status tracking.
+- **AI Accountability Coach**: Powered by Google's Gemini, this coach proactively analyzes your deadlines, categorizes them, and provides actionable advice. It even supports **Voice Interactions** via browser speech recognition!
+- **Deep Work Tools**: Built-in Pomodoro timer and ambient lo-fi/nature beats to keep you focused on your work.
+- **Premium Google Material Design 3 UI**: Clean, intuitive, and highly responsive interface optimized for both desktop and mobile.
+- **Resilient Architecture**: Uses a smart local fallback sandbox (`data.json`) if cloud environments (like Supabase) are unavailable, ensuring you never lose your progress.
 
-View your app in AI Studio: https://ai.studio/apps/fe956228-f716-41c0-bf6e-19c2ecc3c8a3
+## Running Locally 💻
 
-## Run Locally
+**Prerequisites:** Node.js installed on your machine.
 
-**Prerequisites:**  Node.js
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
+2. **Configure Environment Variables:**
+   Rename `.env.example` to `.env.local` (or `.env`) and add your Gemini API Key:
+   ```env
+   VITE_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+   *(Optional)* If you are using Supabase for cloud sync, configure the Supabase URL and Anon Key as well. Otherwise, the app will safely fall back to Local Sandbox Mode.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in Browser:**
+   Navigate to `http://localhost:5173` to see your AI Chief of Staff in action!
+
+## Deployment 🌐
+This project is fully compatible with modern static hosting platforms like Vercel, Netlify, or Render. Simply connect your GitHub repository and set the build command to `npm run build` and output directory to `dist`.
+
+---
+*Built with React, Vite, Tailwind CSS, and the powerful Google Gemini API.*
