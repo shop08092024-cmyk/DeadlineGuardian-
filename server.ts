@@ -17,8 +17,8 @@ app.use(express.json());
 let supabaseServerInstance: any = null;
 function getSupabaseServer() {
   if (supabaseServerInstance === null) {
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_ANON_KEY;
+    const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
+    const key = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
     if (url && key) {
       console.log("Supabase configured, initializing server-side client...");
       supabaseServerInstance = createClient(url, key);
@@ -31,7 +31,7 @@ function getSupabaseServer() {
 }
 
 // File-based simple data store in the project directory for robust persistence
-const DB_FILE = path.join(process.cwd(), "data.json");
+const DB_FILE = process.env.VERCEL ? require("path").join("/tmp", "data.json") : require("path").join(process.cwd(), "data.json");
 
 // Define TypeScript structures for our multi-agent model
 interface Task {
@@ -163,7 +163,7 @@ if (!fs.existsSync(DB_FILE)) {
 let geminiClient: GoogleGenAI | null = null;
 function getGemini(): GoogleGenAI {
   if (!geminiClient) {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
     if (!apiKey) {
       throw new Error("GEMINI_API_KEY environment variable is not configured. Please define it in your Secrets module.");
     }
