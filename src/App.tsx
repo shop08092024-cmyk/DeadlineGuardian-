@@ -1310,59 +1310,31 @@ export default function App() {
     setAuthLoading(true);
     
     try {
-      if (supabase) {
-        // --- REAL Supabase Authentication ---
-        if (authProviderTab === "email") {
-          if (authMode === "login") {
-            const { error } = await supabase.auth.signInWithPassword({
-              email: authEmail.trim(),
-              password: authPassword
-            });
-            if (error) throw error;
-            flashHud("Logged in via Supabase successfully!", "success");
-          } else {
-            const { error } = await supabase.auth.signUp({
-              email: authEmail.trim(),
-              password: authPassword,
-              options: {
-                data: {
-                  full_name: authName.trim() || undefined
-                }
+      if (!supabase) {
+        throw new Error("Supabase is not configured. Please add your credentials to .env.local");
+      }
+      
+      if (authProviderTab === "email") {
+        if (authMode === "login") {
+          const { error } = await supabase.auth.signInWithPassword({
+            email: authEmail.trim(),
+            password: authPassword
+          });
+          if (error) throw error;
+          flashHud("Logged in successfully!", "success");
+        } else {
+          const { error } = await supabase.auth.signUp({
+            email: authEmail.trim(),
+            password: authPassword,
+            options: {
+              data: {
+                full_name: authName.trim() || undefined
               }
-            });
-            if (error) throw error;
-            flashHud("Check your email for confirmation link!", "info");
-          }
+            }
+          });
+          if (error) throw error;
+          flashHud("Check your email for confirmation link!", "info");
         }
-      } else {
-        // --- LOCAL SANDBOX MODE (Virtual Simulation) ---
-        let currentUserId = "";
-        let currentName = authName.trim();
-        let userEmail = authEmail.trim() || undefined;
-        
-        if (authProviderTab === "email") {
-          if (!authEmail.trim() || !authPassword) {
-            throw new Error("Please offer a valid email and password.");
-          }
-          currentUserId = "local-email-" + authEmail.trim().replace(/[^a-zA-Z0-9]/g, "");
-          if (authMode === "login") {
-            currentName = localStorage.getItem(`dg_sandbox_name_${currentUserId}`) || authEmail.split("@")[0];
-          } else {
-            if (!authName.trim()) throw new Error("A name is required for registration.");
-            localStorage.setItem(`dg_sandbox_name_${currentUserId}`, authName.trim());
-          }
-        }
-        
-        const profile: UserProfile = {
-          id: currentUserId,
-          email: userEmail,
-          phone: undefined,
-          name: currentName || "Explorer",
-          authProvider: "local"
-        };
-        setUser(profile);
-        localStorage.setItem("dg_active_user", JSON.stringify(profile));
-        flashHud(`Welcome, ${profile.name}! Logged in to Local Sandbox.`, "success");
       }
     } catch (err: any) {
       flashHud(err.message || "Authentication attempt hit an unexpected obstacle", "error");
@@ -1374,28 +1346,17 @@ export default function App() {
   const handleGoogleSignIn = async () => {
     setAuthLoading(true);
     try {
-      if (supabase) {
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: "google",
-          options: {
-            redirectTo: window.location.origin
-          }
-        });
-        if (error) throw error;
-      } else {
-        // Mock Google Sign-In
-        const currentUserId = "local-google-" + Math.floor(Math.random() * 1000000);
-        const profile: UserProfile = {
-          id: currentUserId,
-          email: "google.explorer@domain.com",
-          name: "Google Explorer",
-          authProvider: "local",
-          avatarUrl: "https://lh3.googleusercontent.com/a/default-user"
-        };
-        setUser(profile);
-        localStorage.setItem("dg_active_user", JSON.stringify(profile));
-        flashHud("Welcome, Google Explorer! Authenticated via Local Google simulation.", "success");
+      if (!supabase) {
+        throw new Error("Supabase is not configured. Please add your credentials to .env.local");
       }
+      
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: window.location.origin
+        }
+      });
+      if (error) throw error;
     } catch (err: any) {
       flashHud(err.message || "Google Authentication attempt hit an unexpected obstacle", "error");
     } finally {
@@ -1405,7 +1366,7 @@ export default function App() {
 
   const handleSignOut = async () => {
     try {
-      if (supabase && user?.authProvider !== "local") {
+      if (supabase) {
         await supabase.auth.signOut();
       }
       setUser(null);
@@ -1451,14 +1412,7 @@ export default function App() {
               <p className="text-sm text-mat-text-secondary mt-1">Autonomous Productivity Chief of Staff</p>
             </div>
             
-            {/* Connection state badge */}
-            <div className="mt-2 text-xs font-medium px-3 py-1 rounded-full bg-mat-tertiary text-mat-text-secondary">
-              {supabaseConfig ? (
-                <span className="text-mat-green">● Cloud Mode Active</span>
-              ) : (
-                <span className="text-mat-orange">⚡ Local Sandbox Mode</span>
-              )}
-            </div>
+            
           </div>
 
           {/* Tab Selection */}
